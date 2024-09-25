@@ -20,6 +20,7 @@ public:
         return name;
     }
 
+
     string getEmail() const {
         return email;
     }
