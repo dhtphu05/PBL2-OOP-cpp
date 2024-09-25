@@ -40,11 +40,16 @@ public:
 };
 int main(){
     DoubleLinkedList<User> users;
-    users.push_back(User(1, "Alice", "eheh"));
-    users.push_back(User(2, "Bob", "eheh"));
-    users.push_back(User(3, "Charlie", "eheh"));
-    users.push_back(User(4, "David", "eheh"));
-    users.push_back(User(5, "Eve", "eheh"));
-    users.push_back(User(6, "Frank", "eheh"));
-    users.push_back(User(7, "Grace", "eheh"));
+    User user1(1, "Alice", "heehe");
+    users.push_back(user1);
+    User user2(2, "Bob", "haha");
+    users.push_back(user2);
+    User user3(3, "Charlie", "hoho");
+    users.push_front(user3);
+    User user4(4, "David", "hihi");
+    users.insert(1,user4);
+    users.display();
+    users[1].Display();
+    cout<<users.getSize()<<endl;
+
 }

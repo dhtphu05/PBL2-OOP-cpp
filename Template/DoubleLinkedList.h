@@ -1,13 +1,12 @@
 #include <iostream>
-
 using namespace std;
 
 template<class Type>
 class Node{
     public:
     Type data;
-    Node <Type>*next;
-    Node <Type>*prev;
+    Node*next;
+    Node*prev;
     Node(const Type& data):data(data),next(nullptr),prev(nullptr){}
 };
 template<class Type>
@@ -37,13 +36,11 @@ public:
             head=newNode;
         }
         else{
-            while(tail->next!=nullptr){
-                tail=tail->next;
-            }
             tail->next=newNode;
             newNode->prev=tail;
             newNode->next=nullptr;
         }
+        tail = newNode;
         this->size++;
     }
     void push_front(const Type& data){
@@ -58,6 +55,9 @@ public:
             newNode->prev=nullptr;
             head->prev=newNode;
             head=newNode; 
+        }
+        if (tail == nullptr) {
+            tail = newNode;
         }
         this->size++;
     }
@@ -84,6 +84,7 @@ public:
                 prevNode->next->prev=newNode;
             }
             prevNode->next=newNode;
+            this->size++;
         }
     }
     void pop_back(){
@@ -136,11 +137,10 @@ public:
             delete current;
             this->size--;
         }
+    }
     Type& operator[] (int index){
-    Node<Type>T& operator[] (int index){
         if(index<0 || index>=size){
-            cout<<"Index out of range"<<endl;
-            return nullptr;
+            throw out_of_range("Index out of range");
         }
         Node<Type> *current=head;
         for(int i=0;i<index;i++){
@@ -156,15 +156,13 @@ public:
         }
         cout<<endl;
     }
-    int getSize(){
-        return size;
-    }   
-    Node<Type>* begin(){
+    Node<Type>* begin() const {
         return head;
     }
-    Node<Type>* end(){
+    Node<Type>* end() const {
         return tail;
     }
-    
-
+    int getSize() const {
+        return size;
+    }
 };
