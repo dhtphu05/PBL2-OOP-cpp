@@ -1,3 +1,5 @@
+#ifndef DOUBLELINKEDLIST_H
+#define DOUBLELINKEDLIST_H
 #include <iostream>
 using namespace std;
 
@@ -25,7 +27,7 @@ public:
         }
         tail = nullptr;
     }
-    bool isEmpty(){
+    bool isEmpty() const {
         return size==0;
     }
     void push_back(const Type& data){
@@ -138,16 +140,18 @@ public:
             this->size--;
         }
     }
-    Type& operator[] (int index){
-        if(index<0 || index>=size){
-            throw out_of_range("Index out of range");
+    
+    const Type& operator[](int index) const {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index out of range");
         }
-        Node<Type> *current=head;
-        for(int i=0;i<index;i++){
-            current=current->next;
+        Node<Type>* current = head;
+        for (int i = 0; i < index; ++i) {
+            current = current->next;
         }
         return current->data;
-    } //using like array access
+    }
+    //using like array access
     void display(){
         Node<Type> *current=head;
         while(current!=nullptr){
@@ -164,5 +168,7 @@ public:
     }
     int getSize() const {
         return size;
-    } 
+    }
 };
+
+#endif

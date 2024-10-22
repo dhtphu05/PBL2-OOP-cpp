@@ -14,8 +14,10 @@ class Movie{
     string actor;
     string language;
     string description;
-    
 
+    public:
+
+dkew
 
 
 
