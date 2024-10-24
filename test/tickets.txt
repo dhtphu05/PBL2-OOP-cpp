@@ -1,0 +1,39 @@
+1
+800
+1         spider man          12 pm               2 pm                12th may 2024       1                   2D                  
+1
+800
+1         spider man          12 pm               2 pm                12th may 2024       1                   2D                  
+1
+800
+1         spider man          12 pm               2 pm                12th may 2024       1                   2D                  
+1
+800
+2         tomb raider         2pm                 5pm                 12th may 2024       3                   2D                  
+1
+60000
+2         Shin: cau be but chi2:00 PM             5:00 PM             27/09/2024          3                   3D                  
+1
+60000
+2         Shin: cau be but chi2:00 PM             5:00 PM             27/09/2024          3                   3D                  
+1
+60000
+2         Shin: cau be but chi2:00 PM             5:00 PM             27/09/2024          3                   2D                  
+1
+60000
+2         Shin: cau be but chi2:00 PM             5:00 PM             27/09/2024          3                   2D                  
+1
+60000
+1         Spider Man: No Way Home10:00 AM            11:00 AM            25/09/2024          1                   2D                  
+1
+60000
+4         Cong tu Bac Lieu    7:45 AM             8:30 AM             30/09/2024          1                   2D                  
+1
+60000
+2         Shin: cau be but chi2:00 PM             5:00 PM             27/09/2024          3                   3D                  
+1
+60000
+2         Shin: cau be but chi2:00 PM             5:00 PM             27/09/2024          3                   3D                  
+1
+60000
+4         Cong tu Bac Lieu    7:45 AM             8:30 AM             30/09/2024          1                   2D                  
