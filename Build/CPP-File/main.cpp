@@ -1,10 +1,10 @@
-#include<windows.h>
+#include <windows.h>
 #include "Movie.cpp"
 #include "User.cpp"
 // #include <windows.h>
 int main()
-{   
-    label_1:
+{
+label_1:
     menuStaff();
     Movie movie;
     int choice;
@@ -14,29 +14,35 @@ int main()
     {
     case 1:
         movie.addMovie();
-        cout<<"Them phim thanh cong";
+        cout << "Them phim thanh cong";
         Sleep(4);
         system("cls");
         goto label_1;
         break;
     case 2:
         movie.editMovie();
-        cout<<"Sua phim thanh cong";
+        cout << "Sua phim thanh cong";
         // system("cls");
         goto label_1;
         break;
     case 3:
         movie.removeMovie();
-        cout<<"Xoa phim thanh cong";
+        cout << "Xoa phim thanh cong";
         Sleep(2000);
         system("cls");
         goto label_1;
         break;
     case 4:
-        // showMovie();
+        system("cls");
+        movie.show();
+        // Sleep(2000);
+        // system("cls");
+        goto label_1;
         break;
     case 5:
-        // showCustomer();
+        system("cls");
+        movie.searchMovie();
+        goto label_1;
         break;
     case 6:
         // bookTicket();

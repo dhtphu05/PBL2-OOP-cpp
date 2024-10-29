@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "menu.cpp"
+#include <cctype>
 Movie::Movie()
 {
 }
@@ -32,7 +33,7 @@ void subSaveAgainFile(DoubleLinkedList<Movie> &movieList)
     }
     for (int i = 0; i < movieList.getSize(); i++)
     {
-        out << movieList[i].ID_Movie << ";" << movieList[i].title << ";" << movieList[i].genre << ";" << movieList[i].duration << ";" << movieList[i].releaseDate << ";" << movieList[i].director << ";" << movieList[i].actor << ";" << movieList[i].country << ";" << movieList[i].description << endl;
+        out << movieList[i].ID_Movie << ";" << movieList[i].title << ";" << movieList[i].genre << ";" << movieList[i].duration << ";" << movieList[i].releaseDate << ";" << movieList[i].director << ";" << movieList[i].actor << ";" << movieList[i].country << ";" << movieList[i].description << ";" << movieList[i].rating << endl;
     }
 }
 void Movie::editMovie()
@@ -110,55 +111,6 @@ void Movie::saveToFile(int i)
         << this->description << ";" << this->rating << endl;
     out.close();
 }
-// void Movie::editMovie()
-// {
-//     DoubleLinkedList<Movie> movieList;
-//     ifstream in;
-//     in.open("../../TEXT/MovieList.txt");
-//     if (!in.is_open())
-//     {
-//         throw runtime_error("Error opening file");
-//     }
-//     string line, ss;
-//     while (getline(in, line))
-//     {
-//         Movie m;
-//         stringstream ss(line);
-//         getline(ss, m.ID_Movie, ';');
-//         getline(ss, m.title, ';');
-//         getline(ss, m.genre, ';');
-//         getline(ss, m.duration, ';');
-//         getline(ss, m.releaseDate, ';');
-//         getline(ss, m.director, ';');
-//         getline(ss, m.actor, ';');
-//         getline(ss, m.country, ';');
-//         getline(ss, m.description);
-//         movieList.push_back(m);
-//     }
-//     in.close();
-//     cout << "Nhap ID phim can sua: ";
-//     string ID;
-//     cin >> ID;
-//     for (int i = 0; i < movieList.getSize(); i++)
-//     {
-//         if (movieList[i].ID_Movie == ID)
-//         {
-//             cout << "Nhap thong tin moi: " << endl;
-//             cin >> movieList[i];
-//             break;
-//         }
-//     }
-//     ofstream out;
-//     out.open("../../TEXT/MovieList.txt");
-//     if (!out.is_open())
-//     {
-//         throw runtime_error("Error opening file");
-//     }
-//     for (int i = 0; i < movieList.getSize(); i++)
-//     {
-//         out << movieList[i].ID_Movie << ";" << movieList[i].title << ";" << movieList[i].genre << ";" << movieList[i].duration << ";" << movieList[i].releaseDate << ";" << movieList[i].director << ";" << movieList[i].actor << ";" << movieList[i].country << ";" << movieList[i].description << endl;
-//     }
-// }
 istream &operator>>(istream &in, Movie &m)
 {
     cout << "ID: ";
@@ -244,7 +196,45 @@ void Movie::readFile(DoubleLinkedList<Movie> &movieList)
 }
 void Movie::Display()
 {
+    cout << *this;
+}
+void Movie::show()
+{
     DoubleLinkedList<Movie> movieList;
     this->readFile(movieList);
     movieList.display();
+}
+std::string toLowerCase(const std::string &str)
+{
+    std::string result = str;
+    for (char &c : result)
+    {
+        c = std::tolower(c); // Chuyển từng ký tự sang chữ thường
+    }
+    return result;
+}
+void Movie::searchMovie()
+{
+    int count = false;
+    DoubleLinkedList<Movie> movieList;
+    this->readFile(movieList);
+    string title;
+    cout << "Nhap ten phim can tim: ";
+    cin.ignore();
+    getline(cin, title);
+    title = toLowerCase(title);
+    for (int i = 0; i < movieList.getSize(); i++)
+    {
+
+        if (toLowerCase(movieList[i].title) == title)
+        {
+            count = true;
+            cout << movieList[i];
+            break;
+        }
+    }
+    if (count == false)
+    {
+        cout << "Khong tim thay phim" << endl;
+    }
 }
