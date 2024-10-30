@@ -13,7 +13,7 @@ void menuStaff()
     cout << "6. Them khach hang" << endl;
     cout << "7. Xem danh sach khach hang" << endl;
     cout << "8. Sua khach hang" << endl;
-    cout << "9. Xu ly thanh toan" << endl;
+    cout << "9. Login" << endl;
     cout << "10. Dang xuat" << endl;
 }
 void menuEditFilm()

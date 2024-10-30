@@ -2,20 +2,52 @@
 void menuEditCustomer();
 Staff::Staff()
 {
+    this->ID = count;
+    count++;
 }
-Staff::Staff(string &ID, string &userName, string &DOB, string &fullName, string &email, string &phoneNumber, string &gender, string &password)
-    : User(fullName, gender, email, DOB, phoneNumber)
+Staff::Staff(string &userName, string &password, string &fullName, string &phoneNumber, string &DOB, string &gender)
+    : User(username, password, fullName, phoneNumber, DOB, gender)
 {
-    this->ID = ID;
-    this->userName = userName;
-    this->password = password;
 }
+// void Staff::addCustomer()
+// {
+//     Customer customer;
+//     cout << "Tao khach hang moi" << endl;
+//     cin >> customer;
+//     customer.savetoFile();
+// }
 void Staff::addCustomer()
 {
     Customer customer;
+    DoubleLinkedList<Customer> listCustomer;
+    customer.readfromFile(listCustomer);
+
     cout << "Tao khach hang moi" << endl;
     cin >> customer;
+    int newID = Customer::count + 1; // Khởi tạo ID mới bằng ID cao nhất + 1
+
+    // Kiểm tra xem ID đã tồn tại chưa
+    while (isIDExists(listCustomer, newID))
+    {
+        newID++; // Tăng ID cho đến khi tìm thấy ID không trùng
+    }
+    customer.setID(newID); // Gán ID duy nhất cho khách hàng mới
+
+    // Lưu thông tin khách hàng vào file
     customer.savetoFile();
+}
+
+// Hàm kiểm tra ID đã tồn tại
+bool Staff::isIDExists(DoubleLinkedList<Customer> &listCustomer, int id)
+{
+    for (int i = 0; i < listCustomer.getSize(); i++)
+    {
+        if (listCustomer[i].returnID() == id) //
+        {
+            return true; // ID đã tồn tại
+        }
+    }
+    return false; // ID không tồn tại
 }
 void Staff::showCustomer()
 {

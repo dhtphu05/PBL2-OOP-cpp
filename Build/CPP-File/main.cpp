@@ -73,6 +73,9 @@ label_1:
     case 9:
         system("cls");
         logIn();
+        Sleep(5000);
+        system("cls");
+        goto label_1;
         break;
     default:
         cout << "lua chon khong hop le" << endl;

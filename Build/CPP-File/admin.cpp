@@ -1,9 +1,11 @@
 #include"../../Include/Admin.h"
 Admin::Admin()
 {
+    this->ID=count;
+    count++;
 }
-Admin::Admin(string &ID, string &userName, string &DOB, string &fullName, string &email, string &phoneNumber, string &gender, string &password)
-    : Staff(ID, userName, DOB, fullName, email, phoneNumber,gender,password)
+Admin::Admin(string &userName, string&password, string &fullName, string &phoneNumber,string &DOB, string &gender)
+    : Staff(userName,password,fullName,phoneNumber, DOB, gender)
     {
         
     }

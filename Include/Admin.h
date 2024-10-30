@@ -7,7 +7,7 @@ class Admin:public Staff{
     // string IDAdmin;
     public:
     Admin();
-    Admin(string &ID,string &userName, string&, string &fullName, string &email, string &phoneNumber, string &gender, string &password);
+    Admin(string &userName, string&password, string &fullName, string &phoneNumber,string &DOB, string &gender);
     void addStaff();
     void editStaff();
     void removeStaff();

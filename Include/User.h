@@ -1,39 +1,47 @@
 #include "Movie.h"
 #include "../Template/DoubleLinkedList.h"
 #include <iostream>
+#include <ctime>
 using namespace std;
 #ifndef USER_H
 #define USER_H
 
 class User
 {
-public:
+protected:
+    static int count;
+    int ID;
     string fullName;
     string dateOfBirth;
     string email;
     string phoneNumber;
     string gender;
+    string username;
+    string password;
 
 public:
     User();
-    User(string &, string &, string &, string &, string &);
+    User(string &, string &, string &, string &, string &, string &);
     void setFullName(string &);
-    void setAge(string &);
+    int &getAge() const;
     void setDOB(string &);
+    void setID(int id){
+        this->ID=id;
+    }
     void setGender(string &);
     void setEmail(string &);
     void setPhoneNumber(string &);
     void setUserName(string &);
     void resetPassword(string &);
-    string getID() const;
-    string getDOB() const;
-    string getFullName() const;
-    int getAge() const;
-    string getGender() const;
-    string getEmail() const;
-    string getPhoneNumber() const;
-    string getUserName() const;
-    string getPassword() const;
+    string &getID();
+    int returnID();
+    string &getDOB();
+    string &getFullName();
+    string &getGender();
+    string &getEmail();
+    string &getPhoneNumber();
+    string &getUserName();
+    string &getPassword();
     virtual void savetoFile();
     virtual void readfromFile();
     virtual void saveAgainFile();

@@ -16,8 +16,8 @@ void menuStaff()
     cout << "5. Tim kiem phim" << endl;
     cout << "6. Them khach hang" << endl;
     cout << "7. Xem danh sach khach hang" << endl;
-    cout << "8. Thanh toan" << endl;
-    cout << "9. Dang nhap" << endl;
+    cout << "8. Sua khach hang" << endl;
+    cout << "9. Login" << endl;
     cout << "10. Dang xuat" << endl;
 }
 void menuAdmin()
