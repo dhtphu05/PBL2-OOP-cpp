@@ -91,34 +91,6 @@ void Customer::readfromFile(DoubleLinkedList<Customer> &listCustomer)
     // Cập nhật count để đảm bảo ID mới không bị trùng
     count = maxID;
 }
-
-// void Customer::readfromFile(DoubleLinkedList<Customer> &listCustomer)
-// {
-
-//     ifstream in;
-//     in.open("../../TEXT/CustomerList.txt");
-//     if (!in.is_open())
-//     {
-//         throw runtime_error("Error opening file");
-//     }
-//     string line;
-//     while (getline(in, line))
-//     {
-//         Customer m;
-//         stringstream ss(line);
-//         string idStr;
-//         getline(ss, idStr, ';'); // Đọc ID dưới dạng chuỗi
-//         m.ID = std::stoi(idStr);
-//         getline(ss, m.username, ';');
-//         getline(ss, m.password, ';');
-//         getline(ss, m.fullName, ';');
-//         getline(ss, m.phoneNumber, ';');
-//         getline(ss, m.dateOfBirth, ';');
-//         getline(ss, m.gender);
-//         listCustomer.push_back(m);
-//     }
-//     in.close();
-// }
 void Customer::Display()
 {
     cout << *this;

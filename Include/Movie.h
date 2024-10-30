@@ -6,7 +6,8 @@ using namespace std;
 #define MOVIE_H
 class Movie{
     private:
-    string ID_Movie;
+    static int countMovie;
+    int ID_Movie;
     string title;
     string genre;
     string duration;
@@ -29,7 +30,10 @@ class Movie{
     void readFile(DoubleLinkedList<Movie>&);
     void selectMovie();
     void getMovie();
-    void setID_Movie();
+    void setID_Movie(){
+        this->ID_Movie = countMovie;
+        
+    };
     void setTitle();
     void setGenre();
     void setReleaseDate();
@@ -44,6 +48,13 @@ class Movie{
     string getID_Movie();
     string getTitle();
     string getGenre();
+    string getDuration();
+    string getReleaseDate();
+    string getDirector();
+    string getActor();
+    string getCountry();
+    string getDescription();
+    string getRating();
     friend ostream &operator<<(ostream& out, const Movie& m);
     friend istream &operator>>(istream& in, Movie& m);
     friend void subSaveAgainFile(DoubleLinkedList<Movie> &movieList);

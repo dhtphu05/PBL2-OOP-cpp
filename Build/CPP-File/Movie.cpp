@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
+int Movie::countMovie = 2000;
 void menuStaff()
 {
     cout << "1. Them phim" << endl;
@@ -31,10 +32,14 @@ void menuEditFilm()
 }
 Movie::Movie()
 {
+    this->ID_Movie = countMovie;
+    countMovie++;
 }
 Movie::Movie(const string &title, const string &genre, string &duration, const string &releaseDate, const string &Rating, string &director, string &actor, string &country, string &decription)
     : title(title), genre(genre), duration(duration), releaseDate(releaseDate), rating(Rating), director(director), actor(actor), country(country), description(description)
 {
+    this->ID_Movie = countMovie;
+    countMovie++;
 }
 void Movie::addMovie()
 {
@@ -67,7 +72,7 @@ void Movie::editMovie()
     this->readFile(movieList);
     system("cls");
     cout << "Nhap ID phim can sua: ";
-    string ID;
+    int ID;
     cin >> ID;
     for (int i = 0; i < movieList.getSize(); i++)
     {
@@ -79,34 +84,32 @@ void Movie::editMovie()
             cin >> choice;
             switch (choice)
             {
+
             case 1:
-                subEditMovie(movieList[i], movieList[i].ID_Movie, "ID");
-                break;
-            case 2:
                 subEditMovie(movieList[i], movieList[i].title, "Ten phim");
                 break;
-            case 3:
+            case 2:
                 subEditMovie(movieList[i], movieList[i].genre, "The Loai");
                 break;
-            case 4:
+            case 3:
                 subEditMovie(movieList[i], movieList[i].duration, "Thoi luong");
                 break;
-            case 5:
+            case 4:
                 subEditMovie(movieList[i], movieList[i].releaseDate, "Ngay san xuat");
                 break;
-            case 6:
+            case 5:
                 subEditMovie(movieList[i], movieList[i].director, "Dao dien");
                 break;
-            case 7:
+            case 6:
                 subEditMovie(movieList[i], movieList[i].actor, "Dien vien");
                 break;
-            case 8:
+            case 7:
                 subEditMovie(movieList[i], movieList[i].country, "Nuoc san xuat");
                 break;
-            case 9:
+            case 8:
                 subEditMovie(movieList[i], movieList[i].description, "Mo ta");
                 break;
-            case 10:
+            case 9:
                 subEditMovie(movieList[i], movieList[i].rating, "Rating");
                 break;
             }
@@ -138,8 +141,6 @@ void Movie::saveToFile(int i)
 }
 istream &operator>>(istream &in, Movie &m)
 {
-    cout << "ID: ";
-    in >> m.ID_Movie;
     cout << "Ten phim: ";
     in.ignore();
     getline(in, m.title);
@@ -163,7 +164,6 @@ istream &operator>>(istream &in, Movie &m)
 }
 ostream &operator<<(ostream &out, const Movie &m)
 {
-    out << "ID: " << m.ID_Movie << endl;
     out << "Ten phim: " << m.title << endl;
     out << "The loai: " << m.genre << endl;
     out << "Thoi luong: " << m.duration << endl;
@@ -173,13 +173,14 @@ ostream &operator<<(ostream &out, const Movie &m)
     out << "Nuoc san xuat: " << m.country << endl;
     out << "Mo ta: " << m.description << endl;
     out << "Rating: " << m.rating << endl;
+    out << "-----------------------------------" << endl;
     return out;
 }
 void Movie::removeMovie()
 {
     DoubleLinkedList<Movie> movieList;
     this->readFile(movieList);
-    string ID;
+    int ID;
     cout << "Nhap ID phim can xoa: ";
     cin >> ID;
     for (int i = 0; i < movieList.getSize(); i++)
@@ -201,11 +202,18 @@ void Movie::readFile(DoubleLinkedList<Movie> &movieList)
         throw runtime_error("Error opening file");
     }
     string line;
+    int maxID = countMovie;
     while (getline(in, line))
     {
         Movie m;
         stringstream ss(line);
-        getline(ss, m.ID_Movie, ';');
+        string idtemp;
+        getline(ss, idtemp, ';');
+        m.ID_Movie = stoi(idtemp);
+        if (m.ID_Movie > maxID)
+        {
+            maxID = m.ID_Movie;
+        }
         getline(ss, m.title, ';');
         getline(ss, m.genre, ';');
         getline(ss, m.duration, ';');
@@ -218,6 +226,7 @@ void Movie::readFile(DoubleLinkedList<Movie> &movieList)
         movieList.push_back(m);
     }
     in.close();
+    countMovie = maxID;
 }
 void Movie::Display()
 {
@@ -262,4 +271,44 @@ void Movie::searchMovie()
     {
         cout << "Khong tim thay phim" << endl;
     }
+}
+string Movie::getID_Movie()
+{
+    return to_string(this->ID_Movie);
+}
+string Movie::getTitle()
+{
+    return this->title;
+}
+string Movie::getGenre()
+{
+    return this->genre;
+}
+string Movie::getDuration()
+{
+    return this->duration;
+}
+string Movie::getReleaseDate()
+{
+    return this->releaseDate;
+}
+string Movie::getDirector()
+{
+    return this->director;
+}
+string Movie::getActor()
+{
+    return this->actor;
+}
+string Movie::getCountry()
+{
+    return this->country;
+}
+string Movie::getDescription()
+{
+    return this->description;
+}
+string Movie::getRating()
+{
+    return this->rating;
 }

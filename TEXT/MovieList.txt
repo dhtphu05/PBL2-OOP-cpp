@@ -1,4 +1,5 @@
-001;Spirited Away (Vung Dat Linh Hon);Phieu luu, Ky ao;125 phut;3-5-2001;Hayao Miyazaki;Rumi Hiiragi, Miyu Irino;Nhat Ban;Mot co be lac vao the gioi linh hon va phai vuot qua thu thach de cuu bo me minh.;8.6/10
-002;HANH PHUC;Phieu Luu;105 phut;2017;Lee Unkrich, Adrian Molina;Anthony Gonzalez, Gael Garcia Bernal;My;Cau be dam me am nhac vo tinh buoc vao the gioi nguoi chet va kham pha bi mat gia dinh.;8.4/10
-003;Toy Story (Cau Chuyen Do Choi);Phieu Luu, Hai;81 phut;1995;John Lasseter;Tom Hanks, Tim Allen;My;Nhung mon do choi song dong hoc cach chung song va doi pho voi thu thach moi.;8.3/10
-005;vui;hai;123phut;7/8/2023;tt;hh;hh;hh;h
+2001;Spirited Away (Vung Dat Linh Hon);Phieu luu, Ky ao;125 phut;3-5-2001;Hayao Miyazaki;Rumi Hiiragi, Miyu Irino;Nhat Ban;Mot co be lac vao the gioi linh hon va phai vuot qua thu thach de cuu bo me minh.;8.6/10
+2002;HANH PHUC;Phieu Luu;105 phut;2017;Lee Unkrich, Adrian Molina;Anthony Gonzalez, Gael Garcia Bernal;My;Cau be dam me am nhac vo tinh buoc vao the gioi nguoi chet va kham pha bi mat gia dinh.;8.4/10
+2003;Toy Story (Cau Chuyen Do Choi);Phieu Luu, Hai;81 phut;1995;John Lasseter;Tom Hanks, Tim Allen;My;Nhung mon do choi song dong hoc cach chung song va doi pho voi thu thach moi.;8.3/10
+2005;vui;hai;123phut;7/8/2023;tt;hh;hh;hh;h
+2001;Con pho nho;tinh yeu;120phut;2/3/2024;truong tan vu;cuong ngoc;VietNam;phim hay nam 2024;8.9/10

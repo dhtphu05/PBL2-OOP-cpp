@@ -10,75 +10,92 @@
 #include "admin.cpp"
 #include"../login/login.cpp"
 
-// #include <windows.h>
+void displayMenu()
+{
+    menuStaff();
+}
+
 int main()
 {
-label_1:
-    menuStaff();
+    bool loggedIn = false;
+    while (!loggedIn)
+    {
+        logIn();
+        cout << "Dang nhap thanh cong!" << endl;
+        loggedIn = true; 
+        Sleep(2000); 
+
     Movie movie;
     Staff staff;
     int choice;
-    cout << "Nhap lua chon: ";
-    cin >> choice;
-    switch (choice)
+    bool running = true;
+
+    while (running)
     {
-    case 1:
-        movie.addMovie();
-        cout << "Them phim thanh cong";
-        Sleep(4);
-        system("cls");
-        goto label_1;
-        break;
-    case 2:
-        movie.editMovie();
-        cout << "Sua phim thanh cong";
-        // system("cls");
-        goto label_1;
-        break;
-    case 3:
-        movie.removeMovie();
-        cout << "Xoa phim thanh cong";
-        Sleep(2000);
-        system("cls");
-        goto label_1;
-        break;
-    case 4:
-        system("cls");
-        movie.show();
-        // Sleep(2000);
-        // system("cls");
-        goto label_1;
-        break;
-    case 5:
-        system("cls");
-        movie.searchMovie();
-        goto label_1;
-        break;
-    case 6:
-        system("cls");
-        staff.addCustomer();
-        cout << "Them khach hang thanh cong";
-        Sleep(5000);
-        system("cls");
-        goto label_1;
-        break;
-    case 7:
-        system("cls");
-        staff.showCustomer();
-        break;
-    case 8:
-        system("cls");
-        staff.editCustomer();
-        break;
-    case 9:
-        system("cls");
-        logIn();
-        Sleep(5000);
-        system("cls");
-        goto label_1;
-        break;
-    default:
-        cout << "lua chon khong hop le" << endl;
-        break;
+        displayMenu();
+        cout << "Nhap lua chon: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            movie.addMovie();
+            cout << "Them phim thanh cong!";
+            Sleep(2000);
+            system("cls");
+            break;
+        case 2:
+            movie.editMovie();
+            cout << "Sua phim thanh cong!";
+            Sleep(2000);
+            system("cls");
+            break;
+        case 3:
+            movie.removeMovie();
+            cout << "Xoa phim thanh cong!";
+            Sleep(2000);
+            system("cls");
+            break;
+        case 4:
+            movie.show();
+            Sleep(2000);
+            system("cls");
+            break;
+        case 5:
+            movie.searchMovie();
+            Sleep(2000);
+            system("cls");
+            break;
+        case 6:
+            staff.addCustomer();
+            cout << "Them khach hang thanh cong!";
+            Sleep(2000);
+            system("cls");
+            break;
+        case 7:
+            staff.showCustomer();
+            Sleep(2000);
+            system("cls");
+            break;
+        case 8:
+            staff.editCustomer();
+            Sleep(2000);
+            system("cls");
+            break;
+        case 9:
+            cout << "Dang xuat...";
+            loggedIn = false;
+            Sleep(2000);
+            system("cls");
+            main(); // Gọi lại main để đăng nhập lại
+            return 0; 
+        default:
+            cout << "Lua chon khong hop le!" << endl;
+            Sleep(2000);
+            system("cls");
+            break;
+        }
     }
+
+    return 0;
 }

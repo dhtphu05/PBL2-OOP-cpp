@@ -9,32 +9,14 @@
 #include "../../Include/Customer.h"
 using namespace std;
 
-template <class T>
-void getInf(DoubleLinkedList<T> &list, ifstream &in)
-{
-    string line;
-    while (getline(in, line))
-    {
-        stringstream ss(line);
-        T m;
-        getline(ss, m.getID(), ';');
-        getline(ss, m.getUserName(), ';');
-        getline(ss, m.getPassword(), ';');
-        getline(ss, m.getFullName(), ';');
-        getline(ss, m.getPhoneNumber(), ';');
-        getline(ss, m.getDOB(),';');
-        getline(ss, m.getGender());
-        list.push_back(m);
-    }
-}
 void getPassword(string &password)
 {
     char ch;
-    cout << "Nhap mat khau: ";
+    cout << "Mat khau: ";
     while ((ch = _getch()) != '\r')
-    { // '\r' là ký tự Enter
+    {
         if (ch == '\b')
-        { // Xử lý khi nhấn phím Backspace
+        {
             if (!password.empty())
             {
                 cout << "\b \b";
@@ -60,7 +42,22 @@ void readFileManagement(int i, DoubleLinkedList<Admin> &adminList, DoubleLinkedL
         {
             throw runtime_error("Error opening file");
         }
-        getInf<Admin>(adminList, in);
+        string line;
+        while (getline(in, line))
+        {
+            stringstream ss(line);
+            Admin m;
+            string id;
+            getline(ss, id, ';');
+            m.setID(stoi(id));
+            getline(ss, m.getUserName(), ';');
+            getline(ss, m.getPassword(), ';');
+            getline(ss, m.getFullName(), ';');
+            getline(ss, m.getPhoneNumber(), ';');
+            getline(ss, m.getDOB(), ';');
+            getline(ss, m.getGender());
+            adminList.push_back(m);
+        }
     }
     else if (i == 2)
     {
@@ -69,16 +66,46 @@ void readFileManagement(int i, DoubleLinkedList<Admin> &adminList, DoubleLinkedL
         {
             throw runtime_error("Error opening file");
         }
-        getInf<Staff>(staffList, in);
+        string line;
+        while (getline(in, line))
+        {
+            stringstream ss(line);
+            Staff m;
+            string id;
+            getline(ss, id, ';');
+            m.setID(stoi(id));
+            getline(ss, m.getUserName(), ';');
+            getline(ss, m.getPassword(), ';');
+            getline(ss, m.getFullName(), ';');
+            getline(ss, m.getPhoneNumber(), ';');
+            getline(ss, m.getDOB(), ';');
+            getline(ss, m.getGender());
+            staffList.push_back(m);
+        }
     }
     else if (i == 3)
     {
-        cout << "Ban khong co quyen truy cap" << endl;
-        // in.open("../../TEXT/CustomerList.txt");
-        // if (!in.is_open()) {
-        //     throw runtime_error("Error opening file");
-        // }
-        // getInf<Customer>(customerList, in);
+        in.open("../../TEXT/CustomerList.txt");
+        if (!in.is_open())
+        {
+            throw runtime_error("Error opening file");
+        }
+        string line;
+        while (getline(in, line))
+        {
+            stringstream ss(line);
+            Customer m;
+            string id;
+            getline(ss, id, ';');
+            m.setID(stoi(id));
+            getline(ss, m.getUserName(), ';');
+            getline(ss, m.getPassword(), ';');
+            getline(ss, m.getFullName(), ';');
+            getline(ss, m.getPhoneNumber(), ';');
+            getline(ss, m.getDOB(), ';');
+            getline(ss, m.getGender());
+            customerList.push_back(m);
+        }
     }
     in.close();
 }
@@ -94,25 +121,26 @@ void logIn()
     int choice;
     cout << "Nhap lua chon: ";
     cin >> choice;
-
+    system("cls");
+    cout<<"-----------Login---------------"<<endl;
     string userName;
     string password;
-    cout << "Nhap ten dang nhap: ";
+    cout << "Ten dang nhap: ";
     cin >> userName;
     getPassword(password);
- 
 
     DoubleLinkedList<Admin> adminList;
     DoubleLinkedList<Staff> staffList;
     DoubleLinkedList<Customer> customerList;
 
     // Đọc danh sách người dùng
-    readFileManagement(1, adminList, staffList, customerList); // Đọc Admin
+
     bool loggedIn = false;
 
     // Kiểm tra thông tin đăng nhập
     if (choice == 1)
-    { // Admin
+    {
+        readFileManagement(1, adminList, staffList, customerList);
         for (int i = 0; i < adminList.getSize(); i++)
         {
             if (adminList[i].username == userName && adminList[i].password == password)
@@ -124,7 +152,8 @@ void logIn()
         }
     }
     else if (choice == 2)
-    { // Staff
+    {
+        readFileManagement(2, adminList, staffList, customerList);
         for (int i = 0; i < staffList.getSize(); i++)
         {
             if (staffList[i].getUserName() == userName && staffList[i].getPassword() == password)
@@ -136,9 +165,11 @@ void logIn()
         }
     }
     else if (choice == 3)
-    { // Customer
+    {
+        readFileManagement(3, adminList, staffList, customerList);
         for (int i = 0; i < customerList.getSize(); i++)
         {
+
             if (customerList[i].getUserName() == userName && customerList[i].getPassword() == password)
             {
                 cout << "Chao " << customerList[i].getFullName() << "!" << endl;
