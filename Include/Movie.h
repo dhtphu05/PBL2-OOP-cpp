@@ -40,16 +40,12 @@ class Movie{
     void setLanguage();
     void setDescription();
     void Display();
+    void show();
     string getID_Movie();
     string getTitle();
     string getGenre();
     friend ostream &operator<<(ostream& out, const Movie& m);
     friend istream &operator>>(istream& in, Movie& m);
     friend void subSaveAgainFile(DoubleLinkedList<Movie> &movieList);
-
-
-
-
-
 };
 #endif

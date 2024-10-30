@@ -2,8 +2,33 @@
 #include "../../Template/DoubleLinkedList.h"
 #include <fstream>
 #include <sstream>
-#include "menu.cpp"
 #include <cctype>
+void menuStaff()
+{
+    cout << "1. Them phim" << endl;
+    cout << "2. Sua phim" << endl;
+    cout << "3. Xoa phim" << endl;
+    cout << "4. Xem danh sach phim" << endl;
+    cout << "5. Tim kiem phim" << endl;
+    cout << "6. Them khach hang" << endl;
+    cout << "7. Xem danh sach khach hang" << endl;
+    cout << "8. Sua khach hang" << endl;
+    cout << "9. Xu ly thanh toan" << endl;
+    cout << "10. Dang xuat" << endl;
+}
+void menuEditFilm()
+{
+    cout << "1. ID" << endl;
+    cout << "2. Ten phim" << endl;
+    cout << "3. The loai" << endl;
+    cout << "4. Thoi luong" << endl;
+    cout << "5. Ngay phat hanh" << endl;
+    cout << "6. Dao dien" << endl;
+    cout << "7. Dien vien" << endl;
+    cout << "8. Nuoc san xuat" << endl;
+    cout << "9. Mo ta" << endl;
+    cout << "10. Rating" << endl;
+}
 Movie::Movie()
 {
 }
@@ -175,7 +200,7 @@ void Movie::readFile(DoubleLinkedList<Movie> &movieList)
     {
         throw runtime_error("Error opening file");
     }
-    string line, ss;
+    string line;
     while (getline(in, line))
     {
         Movie m;

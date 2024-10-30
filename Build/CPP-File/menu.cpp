@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 void menuLogin()
 {
     cout << "1. Dang nhap" << endl;
@@ -13,10 +14,10 @@ void menuStaff()
     cout << "3. Xoa phim" << endl;
     cout << "4. Xem danh sach phim" << endl;
     cout << "5. Tim kiem phim" << endl;
-    cout << "6. Dat ve" << endl;
-    cout << "7. Huy ve" << endl;
+    cout << "6. Them khach hang" << endl;
+    cout << "7. Xem danh sach khach hang" << endl;
     cout << "8. Thanh toan" << endl;
-    cout << "9. Xu ly thanh toan" << endl;
+    cout << "9. Dang nhap" << endl;
     cout << "10. Dang xuat" << endl;
 }
 void menuAdmin()
@@ -57,4 +58,12 @@ void menuEditFilm()
     cout << "8. Nuoc san xuat" << endl;
     cout << "9. Mo ta" << endl;
     cout << "10. Rating" << endl;
+}
+void menuEditCustomer()
+{
+    cout << "1.ID" << endl;
+    cout << "2.Ten" << endl;
+    cout << "3.So dien thoai" << endl;
+    cout << "4.Ngay sinh" << endl;
+    cout << "5.Gioi tinh" << endl;
 }

@@ -1,12 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cctype>
 #include <windows.h>
 #include "Movie.cpp"
 #include "User.cpp"
+#include "Staff.cpp"
+#include "customer.cpp"
+#include "admin.cpp"
+#include"../login/login.cpp"
+
 // #include <windows.h>
 int main()
 {
 label_1:
     menuStaff();
     Movie movie;
+    Staff staff;
     int choice;
     cout << "Nhap lua chon: ";
     cin >> choice;
@@ -45,16 +55,24 @@ label_1:
         goto label_1;
         break;
     case 6:
-        // bookTicket();
+        system("cls");
+        staff.addCustomer();
+        cout << "Them khach hang thanh cong";
+        Sleep(5000);
+        system("cls");
+        goto label_1;
         break;
     case 7:
-        // cancelBooking();
+        system("cls");
+        staff.showCustomer();
         break;
     case 8:
-        // makePayment();
+        system("cls");
+        staff.editCustomer();
         break;
     case 9:
-        // handlePayment();
+        system("cls");
+        logIn();
         break;
     default:
         cout << "lua chon khong hop le" << endl;

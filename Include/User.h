@@ -7,25 +7,26 @@ using namespace std;
 
 class User
 {
-protected:
-    string userName;
-    string password;
+public:
     string fullName;
-    int age;
+    string dateOfBirth;
     string email;
     string phoneNumber;
     string gender;
 
 public:
     User();
-    User(string &, int &, string &, string &, string &, string &, string &);
+    User(string &, string &, string &, string &, string &);
     void setFullName(string &);
-    void setAge(int &);
+    void setAge(string &);
+    void setDOB(string &);
     void setGender(string &);
     void setEmail(string &);
     void setPhoneNumber(string &);
     void setUserName(string &);
     void resetPassword(string &);
+    string getID() const;
+    string getDOB() const;
     string getFullName() const;
     int getAge() const;
     string getGender() const;
@@ -33,6 +34,9 @@ public:
     string getPhoneNumber() const;
     string getUserName() const;
     string getPassword() const;
+    virtual void savetoFile();
+    virtual void readfromFile();
+    virtual void saveAgainFile();
 };
 
 // class Management
