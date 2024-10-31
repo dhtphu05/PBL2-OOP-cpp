@@ -1,13 +1,11 @@
 #include <iostream>
 #include <string>
-#include <fstream>
-#include "../Template/DoubleLinkedList.h" // Ensure this path is correct and the file exists
-#include "Show.h"
+#include"../Template/DoubleLinkedList.h"
 using namespace std;
-
+#ifndef MOVIE_H
+#define MOVIE_H
 class Movie{
     private:
-    int ID_Movie;
     static int countMovie;
     int ID_Movie;
     string title;
@@ -29,7 +27,7 @@ class Movie{
     void viewMovie();
     void searchMovie();
     void saveToFile(int i);
-    void readFile(DoubleLinkedList<Movie> &);
+    void readFile(DoubleLinkedList<Movie>&);
     void selectMovie();
     void getMovie();
     void setID_Movie(){
@@ -61,4 +59,4 @@ class Movie{
     friend istream &operator>>(istream& in, Movie& m);
     friend void subSaveAgainFile(DoubleLinkedList<Movie> &movieList);
 };
-
+#endif
