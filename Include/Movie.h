@@ -1,64 +1,64 @@
-#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "../Template/DoubleLinkedList.h"
+#include "../Template/DoubleLinkedList.h" // Ensure this path is correct and the file exists
 #include "Show.h"
 using namespace std;
-
-
 
 class Movie{
     private:
     int ID_Movie;
+    static int countMovie;
+    int ID_Movie;
     string title;
     string genre;
+    string duration;
     string releaseDate;
     string director;
-    string rating;
-    string duration;
     string actor;
-    string language;
+    string country;
     string description;
-    DoubleLinkedList<Show> shows;
+    string rating;
+
     public:
     Movie();
-    Movie(int ID_Movie, string title, string genre, string releaseDate, string director, string rating, string duration, string actor, string language, string description);
-    //getter
+    Movie(const string& title, const string& genre, string &duration, const string& releaseDate, const string& Rating, string &director, string &actor, string &language, string &decription);
+    void addMovie();
+    void editMovie();
+    void removeMovie();
+    void viewMovie();
+    void searchMovie();
+    void saveToFile(int i);
+    void readFile(DoubleLinkedList<Movie> &);
+    void selectMovie();
+    void getMovie();
+    void setID_Movie(){
+        this->ID_Movie = countMovie;
+        
+    };
+    void setTitle();
+    void setGenre();
+    void setReleaseDate();
+    void setDirector();
+    void setRating();
+    void setDuration();
+    void setActor();
+    void setLanguage();
+    void setDescription();
+    void Display();
+    void show();
     string getID_Movie();
     string getTitle();
     string getGenre();
+    string getDuration();
     string getReleaseDate();
     string getDirector();
-    string getRating();
-    string getDuration();
     string getActor();
-    string getLanguage();
+    string getCountry();
     string getDescription();
-    //setter
-    void setID_Movie(string ID_Movie);
-    void setTitle(string title);
-    void setGenre(string genre);
-    void setReleaseDate(string releaseDate);
-    void setDirector(string director);
-    void setRating(string rating);
-    void setDuration(string duration);
-    void setActor(string actor);
-    void setLanguage(string language);
-    void setDescription(string description);
-    //print
-    //destructor
-    ~Movie();
-
-    void addMovie();
-    void editMovie();
-    void deleteMovie();
-    void searchMovie();
-    void showMovie();
-    void getMovie();
-
-
-
-
-
+    string getRating();
+    friend ostream &operator<<(ostream& out, const Movie& m);
+    friend istream &operator>>(istream& in, Movie& m);
+    friend void subSaveAgainFile(DoubleLinkedList<Movie> &movieList);
 };
+
